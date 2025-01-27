@@ -46,7 +46,6 @@ const Hero = () => {
       const timelineScrolling = gsap.timeline({
         scrollTrigger: {
           trigger: heroRef.current,
-          markers: true,
           start: "center center",
           scrub: 0.1,
           pin: true,
@@ -58,32 +57,33 @@ const Hero = () => {
         {
           y: "200%",
         },
-        { y: "-100%", ease: "none" }
+        { y: "-20%", ease: "none" }
       );
-      timelineScrolling.fromTo(
-        heroRef.current.querySelector(".heroTitle"),
-        { y: 0 },
-        { y: "-300%" },
-        "<"
-      );
+      //   timelineScrolling.fromTo(
+      //     heroRef.current.querySelector(".heroTitle"),
+      //     { y: 0 },
+      //     { y: "-300%" },
+      //     "<"
+      //   );
     },
     { scope: heroRef }
   );
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden" ref={heroRef}>
+    <section className="relative min-h-screen overflow-hidden" ref={heroRef}>
       <video
         src={backgroundVideo}
         loop
         muted
         autoPlay
+        playsInline
         className="absolute left-0 top-0 size-full object-cover z-0"
       />
-      <div className=" z-10 relative flex flex-col justify-end ms-center min-h-[100dvh] mx-[5%] md:mx-[10%] ">
+      <div className="z-10 relative flex flex-col justify-end ms-center min-h-[100dvh] mx-[5%] md:mx-[10%] ">
         <div className="min-h-[60%] md:h-[60dvh]">
           <div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-[150px] xxl:text-[250px] text-[white] font-extralight text-left heroTitle">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl xl:text-[150px] xxl:text-[250px] text-[white]  text-left font-bold md:font-normal lg:font-light xl:font-extralight heroTitle">
               A BIT OF{" "}
-              <span className=" relative">
+              <span className="relative">
                 INDONESIA
                 <span className="absolute bottom-0 left-0 w-0 h-[5px] md:h-[8px] lg:h-[9px] xl:h-[15px] xxl:h-[23px] bg-[white] heroTitleUnderline"></span>
               </span>
