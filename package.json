@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://abrahamparn.github.io/concpetTwo/",
+  "homepage": "https://abrahamparn.github.io/conceptTwo/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -38,21 +38,27 @@ const Navbar = ({ footerRef }) => {
         "<"
       )
       .pause(); // so it doesn't play immediately
-
-    gsap.fromTo(
-      navbarRef.current.querySelector(".conceptTitle"),
-      { color: "black" },
-      {
-        color: "white",
-        scrollTrigger: {
-          trigger: footerRef.current,
-          toggleActions: "play none none reverse",
-          start: "top top",
-        },
-      }
-    );
   }, []); // IMPORTANT: empty dependency array so we only create once
 
+  useGSAP(
+    () => {
+      if (footerRef.current) {
+        gsap.fromTo(
+          navbarRef.current.querySelector(".conceptTitle"),
+          { color: "black" },
+          {
+            color: "white",
+            scrollTrigger: {
+              trigger: footerRef.current.querySelector(".aMountainOfMystery"),
+              toggleActions: "play none none reverse",
+              start: "top top",
+            },
+          }
+        );
+      }
+    },
+    { dependencies: [footerRef], scope: footerRef }
+  );
   const clickNavbar = () => {
     setOpenNavbarAnimation((prev) => !prev);
   };

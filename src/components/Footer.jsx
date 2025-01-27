@@ -2,14 +2,38 @@ import React from "react";
 import secondVideo from "../assets/video/secondVideo.mp4";
 import mountain1 from "../assets/pictures/mountain1.webp";
 import mountain2 from "../assets/pictures/mountain2.webp";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 const Footer = ({ footerRef }) => {
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        footerRef.current.querySelectorAll(".footerImage"),
+        { x: "80%" },
+        {
+          x: "0",
+          transformOrigin: "center center",
+          scrollTrigger: {
+            trigger: footerRef.current.querySelector(".footerImage"),
+            start: "top 80%",
+            toggleActions: "play none none reverse",
+            markers: true,
+          },
+          stagger: 0.1,
+        }
+      );
+    },
+    { scope: footerRef }
+  );
   return (
-    <section className="min-h-screen bg-[black]" ref={footerRef}>
+    <section className="min-h-screen bg-[black] overflow-hidden" ref={footerRef}>
       <video src={secondVideo} loop muted autoPlay playsInline className="w-full" />
       <div className="">
         {/* Content Overlay */}
         <div className="flex flex-col gap-5 xl:gap-10 xxl:gap-20  justify-center xxl:mt-[10%] xxl:justify-start items-start min-h-screen mx-[5%] text-left text-[white] ">
-          <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl xxl:text-9xl font-light xl:mt-10">
+          <h2 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl xxl:text-9xl font-light xl:mt-10 aMountainOfMystery">
             A Mountain of Mystery
           </h2>
           <p className="text-sm md:text-lg lg:text-xl xl:text-2xl xxl:text-5xl mb-8 xxl:leading-relaxed">
@@ -21,27 +45,30 @@ const Footer = ({ footerRef }) => {
           {/* Features List */}
           <ul className="space-y-4 xxl:space-y-8 text-left lg:text-xl xl:text-2xl xxl:text-5xl">
             <li className=" items-start gap-5 justify-center ">
-              <span className="">✔</span> Awe-inspiring vistas that stretch into the heavens.
+              <span className="text-[white]">✔</span> Awe-inspiring vistas that stretch into the
+              heavens.
             </li>
             <li className=" items-start gap-5 justify-center">
-              <span className="">✔</span> A haven for hikers, photographers, and nature lovers.
+              <span className="text-[white]">✔</span> A haven for hikers, photographers, and nature
+              lovers.
             </li>
             <li className=" items-start gap-5 justify-center">
-              <span className="">✔</span> Untouched beauty that embodies the spirit of adventure.
+              <span className="text-[white]">✔</span> Untouched beauty that embodies the spirit of
+              adventure.
             </li>
           </ul>
 
           {/* Optional Images */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 xxl:gap-12 mt-12 w-full ">
+          <div className="flex flex-col md:flex-row gap-8 xxl:gap-12 mt-12 w-full justify-center">
             <img
               src={mountain1}
               alt="Majestic Mountain 1"
-              className="rounded-lg shadow-lg object-cover h-64 xl:h-96 xxl:h-[500px] w-full"
+              className="rounded-lg shadow-lg object-cover h-64 xl:h-96 xxl:h-[500px] w-full footerImage"
             />
             <img
               src={mountain2}
               alt="Majestic Mountain 2"
-              className="rounded-lg shadow-lg object-cover h-64 xl:h-96 xxl:h-[500px] w-full"
+              className="rounded-lg shadow-lg object-cover h-64 xl:h-96 xxl:h-[500px] w-full footerImage"
             />
           </div>
 
