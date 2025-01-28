@@ -19,7 +19,7 @@ const Footer = ({ footerRef }) => {
             trigger: footerRef.current.querySelector(".footerImage"),
             start: "top 80%",
             toggleActions: "play none none reverse",
-            markers: true,
+            //   markers: true,
           },
           stagger: 0.1,
         }
