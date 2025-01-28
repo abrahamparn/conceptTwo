@@ -59,12 +59,6 @@ const Hero = () => {
         },
         { y: "-20%", ease: "none" }
       );
-      //   timelineScrolling.fromTo(
-      //     heroRef.current.querySelector(".heroTitle"),
-      //     { y: 0 },
-      //     { y: "-300%" },
-      //     "<"
-      //   );
     },
     { scope: heroRef }
   );
